@@ -1,21 +1,17 @@
 import React from 'react';
 
+// make functional
 export default class Form extends React.Component {
 
-state = {
-  text: ""
-}
-
-handleSubmit = (e) => {
-  e.preventDefault();
-  this.props.addFilm(this.state.text)
+handleSubmit = event => {
+  event.preventDefault();
+  this.props.searchFilm();
 }
 
 handleTextChange = event => {
-  this.setState({
-    text: event.target.value
-  });
+  this.props.addQuery(event.target.value)
 };
+
 
 
 
@@ -25,7 +21,7 @@ handleTextChange = event => {
         <form onSubmit = {this.handleSubmit}>
           <input placeholder = "Search..."
                         onChange={this.handleTextChange}
-                        value={this.state.text}
+                        value={this.props.text}
           />
           <button type = "submit">search</button>
           
