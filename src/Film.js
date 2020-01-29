@@ -3,7 +3,12 @@ import React from 'react';
 export default class Film extends React.Component {
   render() {
     return (
-      <p>film</p>
+      <div>
+        <h2>{this.props.title}</h2>
+        <p>{this.props.year}</p>
+        <p>{this.props.imdbID}</p>
+
+      </div>
       )
     }
   }
