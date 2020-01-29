@@ -9,8 +9,7 @@ const api = "https://www.omdbapi.com/?apikey=506c5e9"
 export default class App extends React.Component {
   state = {
     query : "",
-    films : [],
-    selected : {} 
+    films : [], 
   }
 
   addQuery = (text) => {
@@ -30,17 +29,16 @@ export default class App extends React.Component {
     } )
   }
 
+  filmDetails = (imdbID) => {
+    axios(api + "&i=" + imdbID)
+      .then (( {data} ) => {
+        console.log(data)
+      })
+  }
+
 
 
   render() {
-    // const films =  this.state.films.map((film) => {
-    //   return(
-    //     <li>
-    //       {film.Title}
-    //     </li>
-    //     )
-    //   })
-
     const films = this.state.films.map((film) => {
       return(
       <Film
@@ -50,6 +48,7 @@ export default class App extends React.Component {
         type = {film.Type}
         poster = {film.Poster}
         key = {shortid.generate()}
+        filmDetails = {this.filmDetails}
       />
       )
     })
