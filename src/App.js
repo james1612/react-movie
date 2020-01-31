@@ -3,6 +3,7 @@ import axios from "axios"
 import Film from "./Film";
 import Form from "./Form";
 import shortid from 'shortid'
+import FilmIcon from './FilmIcon';
 
 const api = "https://www.omdbapi.com/?apikey=506c5e9"
 
@@ -50,18 +51,22 @@ export default class App extends React.Component {
         key = {shortid.generate()}
         filmDetails = {this.filmDetails}
       />
+      )}
       )
-    })
 
 
   return (
     <div className="App">
-      <h1>Movie database</h1>
+      <div className = "headerWrapper">
+        <h1>Movie database</h1>
+      </div>
+      <div className = "formWrapper">
       <Form 
         text = {this.state.query}
         addQuery = {this.addQuery}
         searchFilm = {this.searchFilm}
        />
+       </div>
 
 
 
